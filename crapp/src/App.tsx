@@ -2,13 +2,13 @@ import React from 'react';
 import './App.css';
 import Root from './layout/Root/Root';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, createHashRouter, RouterProvider } from 'react-router-dom';
 import AllCatsPage from './pages/AllCatsPage/AllCatsPage';
 import FavoriteCatsPage from './pages/FavoriteCatsPage/FavoriteCatsPage';
 import * as api_cats from './api/api-cats';
 import CatProvider from './store/CatProvider';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <Root />,
