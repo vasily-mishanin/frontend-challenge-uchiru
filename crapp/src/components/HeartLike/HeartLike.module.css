@@ -1,0 +1,12 @@
+.like {
+  position: absolute;
+  bottom: 0.2rem;
+  right: 0.2rem;
+}
+
+.like:hover {
+  cursor: pointer;
+}
+
+.image {
+}

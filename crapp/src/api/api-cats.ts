@@ -5,6 +5,6 @@ const CATS_LIMIT = 15;
 
 export async function getAllCats() {
   const res = await fetch(`${baseURL}?limit=${CATS_LIMIT}`);
-  const data: ICatImage = await res.json();
+  const data: ICatImage[] = await res.json();
   return data;
 }

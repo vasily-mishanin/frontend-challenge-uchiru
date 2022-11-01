@@ -12,7 +12,7 @@ function ListCats({ catsImages }: ICats) {
     <ul className={classes.list}>
       {catsImages.map((cat) => (
         <li className={classes.item} key={cat.id}>
-          <CardCat {...cat} />
+          <CardCat cat={cat} />
         </li>
       ))}
     </ul>

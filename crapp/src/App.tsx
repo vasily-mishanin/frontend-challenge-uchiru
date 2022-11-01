@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AllCatsPage from './pages/AllCatsPage/AllCatsPage';
 import FavoriteCatsPage from './pages/FavoriteCatsPage/FavoriteCatsPage';
 import * as api_cats from './api/api-cats';
+import CatProvider from './store/CatProvider';
 
 const router = createBrowserRouter([
   {
@@ -13,10 +14,11 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
-      // {
-      //   path: '/',
-      //   element: <AllCatsPage />,
-      // },
+      {
+        path: '/',
+        element: <AllCatsPage />,
+        loader: () => api_cats.getAllCats(),
+      },
       {
         path: 'all-cats',
         element: <AllCatsPage />,
@@ -29,9 +31,11 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <div className='app'>
-      <RouterProvider router={router} />
-    </div>
+    <CatProvider>
+      <div className='app'>
+        <RouterProvider router={router} />
+      </div>
+    </CatProvider>
   );
 }
 

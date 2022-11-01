@@ -3,4 +3,5 @@ export interface ICatImage {
   url: string;
   width: number;
   height: number;
+  inFavor?: boolean;
 }

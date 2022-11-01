@@ -1,8 +1,11 @@
 .navigation {
+  background: #2196f3;
+  padding: 23px 62px;
 }
 
 .list {
   display: flex;
+  flex-flow: row wrap;
   gap: 1rem;
 }
 

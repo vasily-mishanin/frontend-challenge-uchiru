@@ -7,6 +7,7 @@ header {
 }
 main {
   flex: 1 0 auto;
+  padding: 62px;
 }
 footer {
   flex-shrink: 0;
