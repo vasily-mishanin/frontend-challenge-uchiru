@@ -10,14 +10,14 @@ import * as api_cats from '../../api/api-cats';
 
 function AllCatsPage() {
   const catsCtx = useContext(CatsContext);
-  const initialCats = useLoaderData() as ICatImage[];
-  useEffect(() => {
-    catsCtx.addCats(initialCats);
-  }, []);
+  let initialCats = useLoaderData() as ICatImage[];
+  // catsCtx.addCats(initialCats);
+  // initialCats = [];
+  useEffect(() => {}, []);
 
   return (
     <div className={classes.wrapper}>
-      <ListCats catsImages={catsCtx.cats} />
+      <ListCats catsImages={initialCats} />
       {/* <InfiniteScroll dataLength={catsCtx.cats.length} >
       </InfiniteScroll> */}
     </div>
