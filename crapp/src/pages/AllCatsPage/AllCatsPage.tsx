@@ -18,6 +18,7 @@ function AllCatsPage() {
 
   return (
     <div className={classes.wrapper}>
+      <p>Add Infinite Scroll</p>
       <ListCats catsImages={initialCats} />
       {isLoading && <p> ... загружаем еще котиков ... </p>}
       {/* <InfiniteScroll dataLength={catsCtx.cats.length} >
