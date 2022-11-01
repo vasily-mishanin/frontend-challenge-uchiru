@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/frontend-challenge-uchiru/static/css/main.fa17b708.css",
-    "main.js": "/frontend-challenge-uchiru/static/js/main.018dd710.js",
+    "main.js": "/frontend-challenge-uchiru/static/js/main.43ea1974.js",
     "static/js/787.87430664.chunk.js": "/frontend-challenge-uchiru/static/js/787.87430664.chunk.js",
     "index.html": "/frontend-challenge-uchiru/index.html",
     "static/media/heart.svg": "/frontend-challenge-uchiru/static/media/heart.6adfe85f8b98c6dc6b44df906a50f5eb.svg",
     "static/media/heart-full.svg": "/frontend-challenge-uchiru/static/media/heart-full.6e844464e1e159f1f41bca68b1b9c1bc.svg",
     "main.fa17b708.css.map": "/frontend-challenge-uchiru/static/css/main.fa17b708.css.map",
-    "main.018dd710.js.map": "/frontend-challenge-uchiru/static/js/main.018dd710.js.map",
+    "main.43ea1974.js.map": "/frontend-challenge-uchiru/static/js/main.43ea1974.js.map",
     "787.87430664.chunk.js.map": "/frontend-challenge-uchiru/static/js/787.87430664.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fa17b708.css",
-    "static/js/main.018dd710.js"
+    "static/js/main.43ea1974.js"
   ]
 }
