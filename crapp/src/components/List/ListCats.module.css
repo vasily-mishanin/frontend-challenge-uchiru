@@ -1,13 +1,8 @@
-.navigation {
-}
-
 .list {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
 .item {
-}
-
-.link {
 }

@@ -8,6 +8,8 @@ function MainNavigation() {
           <NavLink className={classes.link} to='all-cats'>
             Все котики
           </NavLink>
+        </li>
+        <li className={classes.item}>
           <NavLink className={classes.link} to='favorite-cats'>
             Любимые котики
           </NavLink>

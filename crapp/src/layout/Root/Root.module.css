@@ -1,9 +1,13 @@
-function Root() {
-  return (
-    <div>
-      <h1>Root</h1>
-    </div>
-  );
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
-
-export default Root;
+header {
+}
+main {
+  flex: 1 0 auto;
+}
+footer {
+  flex-shrink: 0;
+}
