@@ -33,8 +33,16 @@ function CardCat({ cat }: ICardCat) {
   return (
     <article className={classes.wrapper} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className={classes.card}>
-        <div className={classes.imagewrapper}>
-          <img className={classes.image} src={cat.url} alt='Cat' />
+        <div
+          className={classes.imagewrapper}
+          style={{
+            background: `url(${cat.url})`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundOrigin: 'revert',
+          }}
+        >
+          {/* <img className={classes.image} src={cat.url} alt='Cat' /> */}
           {(isLikeShown || cat.inFavor) && <HeartLike onLikeClick={handleLike} inFavor={cat.inFavor} />}
         </div>
       </div>

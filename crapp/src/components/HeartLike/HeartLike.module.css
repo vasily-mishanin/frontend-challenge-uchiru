@@ -1,7 +1,7 @@
 .like {
   position: absolute;
-  bottom: 0.2rem;
-  right: 0.2rem;
+  right: 4px;
+  bottom: 8px;
 }
 
 .like:hover {
