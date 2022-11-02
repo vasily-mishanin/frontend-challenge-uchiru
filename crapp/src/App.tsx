@@ -8,6 +8,7 @@ import FavoriteCatsPage from './pages/FavoriteCatsPage/FavoriteCatsPage';
 import * as api_cats from './api/api-cats';
 import CatProvider from './store/CatProvider';
 
+// createBrowserRouter - doesn't work with gh-pages
 const router = createHashRouter([
   {
     path: '/',
@@ -17,12 +18,12 @@ const router = createHashRouter([
       {
         path: '/',
         element: <AllCatsPage />,
-        loader: () => api_cats.getAllCats(),
+        loader: () => api_cats.fetchCats(),
       },
       {
         path: 'all-cats',
         element: <AllCatsPage />,
-        loader: () => api_cats.getAllCats(),
+        loader: () => api_cats.fetchCats(),
       },
       { path: 'favorite-cats', element: <FavoriteCatsPage /> },
     ],

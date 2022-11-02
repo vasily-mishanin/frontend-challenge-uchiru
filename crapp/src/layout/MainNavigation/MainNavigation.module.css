@@ -40,3 +40,9 @@
 a.link:hover {
   border-bottom: 1px solid white;
 }
+
+@media (max-width: 768px) {
+  .list {
+    justify-content: flex-end;
+  }
+}

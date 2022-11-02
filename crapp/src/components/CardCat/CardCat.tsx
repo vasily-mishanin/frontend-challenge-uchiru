@@ -11,34 +11,38 @@ interface ICardCat {
 
 function CardCat({ cat }: ICardCat) {
   const [isLikeShown, setIsLikeShown] = useState(false);
-  const [isInFavorite, setIsInFavorite] = useState(cat.inFavor);
 
   const catsCtx = useContext(CatsContext);
 
   const handleMouseEnter = () => {
-    console.log('toggleCardHover');
     setIsLikeShown(true);
   };
 
   const handleMouseLeave = () => {
-    console.log('toggleCardHover');
     setIsLikeShown(false);
   };
 
   const handleLike = () => {
-    console.log('LIKE');
     if (cat.inFavor) {
-      catsCtx.removeCatImg(cat.id);
+      catsCtx.removeFavCat(cat.id);
     } else {
-      catsCtx.addCatImg(cat);
+      catsCtx.addFavCat(cat.id);
     }
   };
 
   return (
     <article className={classes.wrapper} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className={classes.card}>
-        <div className={classes.imagewrapper}>
-          <img className={classes.image} src={cat.url} alt='Cat' />
+        <div
+          className={classes.imagewrapper}
+          style={{
+            background: `url(${cat.url})`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundOrigin: 'revert',
+          }}
+        >
+          {/* <img className={classes.image} src={cat.url} alt='Cat' /> */}
           {(isLikeShown || cat.inFavor) && <HeartLike onLikeClick={handleLike} inFavor={cat.inFavor} />}
         </div>
       </div>
