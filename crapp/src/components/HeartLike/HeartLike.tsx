@@ -28,15 +28,11 @@ function HeartLike({ onLikeClick, inFavor }: ILike) {
   };
 
   const handleClick = () => {
-    setIsSolid(false);
+    if (inFavor && isSolid) {
+      setIsSolid(false);
+    }
     onLikeClick();
   };
-
-  //   const renderLike = () => {
-  //     if (inFavor) {
-  //       return <img className={classes.image} src={FullHeartIcon} alt='Cat' />;
-  //     }
-  //   };
 
   return (
     <div
@@ -45,10 +41,8 @@ function HeartLike({ onLikeClick, inFavor }: ILike) {
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
     >
-      {isSolid && inFavor && <img className={classes.image} src={FullHeartIcon} alt='Cat' />}
-      {!isSolid && inFavor && <img className={classes.image} src={HeartIcon} alt='Cat' />}
-      {!isSolid && !inFavor && <img className={classes.image} src={HeartIcon} alt='Cat' />}
-      {isSolid && !inFavor && <img className={classes.image} src={FullHeartIcon} alt='Cat' />}
+      {isSolid && <img className={classes.image} src={FullHeartIcon} alt='Cat' />}
+      {!isSolid && <img className={classes.image} src={HeartIcon} alt='Cat' />}
     </div>
   );
 }

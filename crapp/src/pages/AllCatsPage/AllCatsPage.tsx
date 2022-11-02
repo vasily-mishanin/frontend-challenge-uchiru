@@ -36,6 +36,7 @@ function AllCatsPage() {
   return (
     <div className={classes.wrapper} id='scrollableDiv'>
       <InfiniteScroll
+        className={classes.infScroll}
         dataLength={catsCtx.cats.length}
         next={addMoreCats}
         hasMore={true}

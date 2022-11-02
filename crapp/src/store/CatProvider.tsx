@@ -61,7 +61,9 @@ function CatProvider(props: ICatProvider) {
     setCats((prevCats) => {
       const cats = [...prevCats];
       let indexOfFavCat = cats.findIndex((cat) => cat.id === id);
-      cats[indexOfFavCat].inFavor = false;
+      if (indexOfFavCat > -1) {
+        cats[indexOfFavCat].inFavor = false;
+      }
       return cats;
     });
     setFavCats((prev) => {

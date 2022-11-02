@@ -1,7 +1,7 @@
 import type { ICatImage } from '../model/types';
 
 const baseURL = 'https://api.thecatapi.com/v1/images/search';
-const CATS_LIMIT = 7;
+const CATS_LIMIT = 10;
 
 export async function fetchCats() {
   try {

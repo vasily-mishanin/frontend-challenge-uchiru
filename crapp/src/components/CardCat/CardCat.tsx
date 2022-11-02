@@ -11,22 +11,18 @@ interface ICardCat {
 
 function CardCat({ cat }: ICardCat) {
   const [isLikeShown, setIsLikeShown] = useState(false);
-  const [isInFavorite, setIsInFavorite] = useState(cat.inFavor);
 
   const catsCtx = useContext(CatsContext);
 
   const handleMouseEnter = () => {
-    console.log('toggleCardHover');
     setIsLikeShown(true);
   };
 
   const handleMouseLeave = () => {
-    console.log('toggleCardHover');
     setIsLikeShown(false);
   };
 
   const handleLike = () => {
-    console.log('LIKE');
     if (cat.inFavor) {
       catsCtx.removeFavCat(cat.id);
     } else {
