@@ -3,18 +3,18 @@ import React from 'react';
 
 export interface ICatsStore {
   cats: ICatImage[];
+  favCats: ICatImage[];
   addCats: (cats: ICatImage[]) => void;
-  favCatsImages: ICatImage[];
-  addCatImg: (catImage: ICatImage) => void;
-  removeCatImg: (id: string) => void;
+  addFavCat: (id: string) => void;
+  removeFavCat: (id: string) => void;
 }
 
 const initialCatsState: ICatsStore = {
   cats: [],
+  favCats: [],
   addCats: () => {},
-  favCatsImages: [],
-  addCatImg: () => {},
-  removeCatImg: () => {},
+  addFavCat: () => {},
+  removeFavCat: () => {},
 };
 
 const CatsContext = React.createContext(initialCatsState);

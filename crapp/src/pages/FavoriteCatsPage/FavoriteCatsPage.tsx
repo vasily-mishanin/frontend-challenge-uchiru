@@ -8,8 +8,8 @@ function FavoriteCatsPage() {
 
   return (
     <div className={classes.page}>
-      {catsCtx.favCatsImages.length === 0 && <h1>No favorites cats yet &#128577;</h1>}
-      <ListCats catsImages={catsCtx.favCatsImages} />
+      {catsCtx.favCats.length === 0 && <h3>Пока нет любимых котиков &#128577;</h3>}
+      <ListCats catsImages={catsCtx.favCats} />
     </div>
   );
 }

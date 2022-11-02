@@ -28,9 +28,9 @@ function CardCat({ cat }: ICardCat) {
   const handleLike = () => {
     console.log('LIKE');
     if (cat.inFavor) {
-      catsCtx.removeCatImg(cat.id);
+      catsCtx.removeFavCat(cat.id);
     } else {
-      catsCtx.addCatImg(cat);
+      catsCtx.addFavCat(cat.id);
     }
   };
 

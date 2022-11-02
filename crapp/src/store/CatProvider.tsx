@@ -7,8 +7,8 @@ interface ICatProvider {
   children: React.ReactNode;
 }
 
-const getCatsImagesFromLocalStorages = () => {
-  const cats = localStorage.getItem('favCatsImages');
+const getCatsFromLocalStorage = () => {
+  const cats = localStorage.getItem('favCats');
   if (cats) {
     return JSON.parse(cats);
   } else {
@@ -18,15 +18,14 @@ const getCatsImagesFromLocalStorages = () => {
 
 function CatProvider(props: ICatProvider) {
   const [cats, setCats] = useState<ICatImage[]>([]);
-  const [favoriteCats, setFavoriteCats] = useState<ICatImage[]>(getCatsImagesFromLocalStorages());
-  console.log('CatProvider', favoriteCats);
+  const [favCats, setFavCats] = useState<ICatImage[]>(getCatsFromLocalStorage());
+  console.log('CatProvider', cats);
 
   const addNewCats = (newCats: ICatImage[]) => {
     console.log('addNewCats', cats.length);
 
     setCats((prevCats) => {
       let cats = [...prevCats];
-      // const updatedCats = [...prevCats];
       newCats.forEach((newCat) => {
         if (!cats.some((cat) => cat.id === newCat.id)) {
           cats = [...cats, newCat];
@@ -36,32 +35,48 @@ function CatProvider(props: ICatProvider) {
     });
   };
 
-  const addFavCatImage = (catImage: ICatImage) => {
-    setFavoriteCats((prev) => {
-      if (!prev.some((cat) => cat.id === catImage.id)) {
-        catImage.inFavor = true;
-        const newCatImages = [...prev, catImage];
-        localStorage.setItem('favCatsImages', JSON.stringify(newCatImages));
-        return newCatImages;
+  const addFavCat = (id: string) => {
+    setCats((prevCats) => {
+      const cats = [...prevCats];
+      let indexOfFavCat = cats.findIndex((cat) => cat.id === id);
+      cats[indexOfFavCat].inFavor = true;
+      return cats;
+    });
+
+    setFavCats((prev) => {
+      if (!prev.some((favCat) => favCat.id === id)) {
+        const favCatToAdd = cats.find((cat) => cat.id === id);
+        if (favCatToAdd) {
+          favCatToAdd.inFavor = true;
+          const newFavCats = [...prev, favCatToAdd];
+          localStorage.setItem('favCats', JSON.stringify(newFavCats));
+          return newFavCats;
+        }
       }
       return prev;
     });
   };
 
-  const removeFavCatImage = (id: string) => {
-    setFavoriteCats((prev) => {
-      const newCatImages = prev.filter((cat) => cat.id !== id);
-      localStorage.setItem('favCatsImages', JSON.stringify(newCatImages));
-      return newCatImages;
+  const removeFavCat = (id: string) => {
+    setCats((prevCats) => {
+      const cats = [...prevCats];
+      let indexOfFavCat = cats.findIndex((cat) => cat.id === id);
+      cats[indexOfFavCat].inFavor = false;
+      return cats;
+    });
+    setFavCats((prev) => {
+      const newFavCats = prev.filter((cat) => cat.id !== id);
+      localStorage.setItem('favCats', JSON.stringify(newFavCats));
+      return newFavCats;
     });
   };
 
   const catContext: ICatsStore = {
     cats: cats,
-    favCatsImages: favoriteCats,
-    addCatImg: addFavCatImage,
-    removeCatImg: removeFavCatImage,
+    favCats: favCats,
     addCats: addNewCats,
+    addFavCat: addFavCat,
+    removeFavCat: removeFavCat,
   };
 
   return <CatsContext.Provider value={catContext}>{props.children}</CatsContext.Provider>;
