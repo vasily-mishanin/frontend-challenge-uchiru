@@ -9,20 +9,40 @@ import { useEffect } from 'react';
 import * as api_cats from '../../api/api-cats';
 
 function AllCatsPage() {
-  const catsCtx = useContext(CatsContext);
   const [isLoading, setIsLoading] = useState(false);
+  const catsCtx = useContext(CatsContext);
   let initialCats = useLoaderData() as ICatImage[];
-  // catsCtx.addCats(initialCats);
-  // initialCats = [];
-  useEffect(() => {}, []);
+  console.log('initialCats', initialCats);
+  console.log('catsCtx', catsCtx.cats);
+
+  useEffect(() => {
+    console.log('USE EFFECT', catsCtx.cats.length);
+    if (catsCtx.cats.length > 0) {
+      return;
+    } else {
+      catsCtx.addCats(initialCats);
+    }
+  }, []);
+
+  const addMoreCats = async () => {
+    console.log('addMoreCats');
+    const moreCats = await api_cats.fetchCats();
+    // just for UI smoothness
+    setTimeout(() => {
+      catsCtx.addCats(moreCats);
+    }, 500);
+  };
 
   return (
-    <div className={classes.wrapper}>
-      <p>Add Infinite Scroll</p>
-      <ListCats catsImages={initialCats} />
-      {isLoading && <p> ... загружаем еще котиков ... </p>}
-      {/* <InfiniteScroll dataLength={catsCtx.cats.length} >
-      </InfiniteScroll> */}
+    <div className={classes.wrapper} id='scrollableDiv'>
+      <InfiniteScroll
+        dataLength={catsCtx.cats.length}
+        next={addMoreCats}
+        hasMore={true}
+        loader={<p> ... загружаем еще котиков ... </p>}
+      >
+        <ListCats catsImages={catsCtx.cats} />
+      </InfiniteScroll>
     </div>
   );
 }

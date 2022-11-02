@@ -22,7 +22,18 @@ function CatProvider(props: ICatProvider) {
   console.log('CatProvider', favoriteCats);
 
   const addNewCats = (newCats: ICatImage[]) => {
-    setCats((prev) => [...prev, ...newCats]);
+    console.log('addNewCats', cats.length);
+
+    setCats((prevCats) => {
+      let cats = [...prevCats];
+      // const updatedCats = [...prevCats];
+      newCats.forEach((newCat) => {
+        if (!cats.some((cat) => cat.id === newCat.id)) {
+          cats = [...cats, newCat];
+        }
+      });
+      return cats;
+    });
   };
 
   const addFavCatImage = (catImage: ICatImage) => {
