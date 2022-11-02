@@ -8,3 +8,9 @@
 
 .item {
 }
+
+@media (max-width: 768px) {
+  .list {
+    justify-content: center;
+  }
+}
